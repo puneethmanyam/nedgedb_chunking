@@ -707,7 +707,7 @@ void selectSync(const FunctionCallbackInfo<Value>& args) {
 	}
 	if(flag!=0 || i==0){
 		for(k=0;k<i%chunk_length;k++){
-			end_result->Set(k,result->Get(j));
+			end_result->Set(k,result->Get(k));
 		}
 		Local<Value> argv[2] = { Number::New(isolate, retcode), end_result };
 		cb->Call(isolate->GetCurrentContext()->Global(), 2, argv);
