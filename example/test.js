@@ -6,15 +6,14 @@ var db = new nedgedb.database("mydsn","pmanyam","","PUB");    //creating a db ob
 var records=[];
 var collection;
 
-db.connectSync(function(err,res){
-	if(err){
-		throw err;
-	}
-	else{
-		console.log("\nConnected Successfully");
-		collection = db.collection("customer");         //creating a collection object which basically can access the table "customers"
-	}
-});
+var err = db.connectSync();
+if(err){
+	throw err;
+}
+else{
+	console.log("\nConnected Successfully");
+	collection = db.collection("customer");         //creating a collection object which basically can access the table "customers"
+}
 
 console.log("\nconnect is in Sync\n");
 
@@ -35,13 +34,11 @@ console.log("Total number of records Received = ",records.length);
 
 console.log("\nFind is in Sync\n");
 
-db.disconnectSync(function(err,res){
-	if(err){
-		throw err;
-	}
-	else{
-		console.log("Disconnected Successfully\n");
-	}
-});
-
+var err = db.disconnectSync();
+if(err){
+	throw err;
+}
+else{
+	console.log("Disconnected Successfully\n");
+}
 console.log("Disconnect is in Sync\n");
